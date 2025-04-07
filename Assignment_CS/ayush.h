@@ -1,5 +1,4 @@
-#ifndef MATH_FUNCTIONS_H
-#define MATH_FUNCTIONS_H
+#pragma once  // Simple and modern way to avoid multiple inclusion
 
 int sum(int a, int b) {
     return a + b;
@@ -20,11 +19,6 @@ int divide(int a, int b) {
     return 0;
 }
 
-int even_or_odd(int a) {
-    return (a % 2 == 0) ? 1 : 0;
-}
-
-
 char* pyramid(int n, char* buffer) {
     int index = 0;
     for (int i = 1; i <= n; i++) {
@@ -36,7 +30,7 @@ char* pyramid(int n, char* buffer) {
         }
         buffer[index++] = '\n';
     }
-    buffer[index] = '\0'; 
+    buffer[index] = '\0';
     return buffer;
 }
 
@@ -62,7 +56,7 @@ int palindrome(int n) {
         rev = rev * 10 + rem;
         n = n / 10;
     }
-    return (rev == temp) ? 1 : 0;
+    return (rev == temp);
 }
 
 int bubble_sort(int arr[], int n) {
@@ -78,7 +72,5 @@ int bubble_sort(int arr[], int n) {
         }
         if (!swapped) break;
     }
-    return 0; 
+    return 0;
 }
-
-#endif
