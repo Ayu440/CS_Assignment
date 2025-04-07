@@ -1,43 +1,84 @@
-#include<stdio.h>
-int sum(int a,int b){
-    return a+b;
+#ifndef MATH_FUNCTIONS_H
+#define MATH_FUNCTIONS_H
+
+int sum(int a, int b) {
+    return a + b;
 }
-int diff(int a,int b){
-    return a-b;
+
+int diff(int a, int b) {
+    return a - b;
 }
-int product(int a,int b){
-    return a*b;
+
+int product(int a, int b) {
+    return a * b;
 }
-int divide(int a,int b){
-    return a/b;
-}
-int even_or_odd(int a){
-    if(a%2==0){
-        printf("even");
+
+int divide(int a, int b) {
+    if (b != 0) {
+        return a / b;
     }
-    else if(a%2==1){
-        printf("odd");
-    }
+    return 0;
 }
-int pyramid(int n){
-    for(int i=1;i<=n;i++){
-        for(int j=1;j<=n-i;j++){
-        printf(" ");
-    }
-    for(int k=1;k<=2*i-1;k++){
-        printf("*");
-    }
-    printf("\n");
+
+int even_or_odd(int a) {
+    return (a % 2 == 0) ? 1 : 0;
 }
-}
-int upsidedown_pyramid(int n){
-    for(int i=n;i>=1;i--){
-        for(int j=1;j<=n-i;j++){
-        printf(" ");
+
+
+char* pyramid(int n, char* buffer) {
+    int index = 0;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n - i; j++) {
+            buffer[index++] = ' ';
+        }
+        for (int k = 1; k <= 2 * i - 1; k++) {
+            buffer[index++] = '*';
+        }
+        buffer[index++] = '\n';
     }
-    for(int k=1;k<=2*i-1;k++){
-        printf("*");
+    buffer[index] = '\0'; 
+    return buffer;
+}
+
+char* upsidedown_pyramid(int n, char* buffer) {
+    int index = 0;
+    for (int i = n; i >= 1; i--) {
+        for (int j = 1; j <= n - i; j++) {
+            buffer[index++] = ' ';
+        }
+        for (int k = 1; k <= 2 * i - 1; k++) {
+            buffer[index++] = '*';
+        }
+        buffer[index++] = '\n';
     }
-    printf("\n");
+    buffer[index] = '\0';
+    return buffer;
 }
+
+int palindrome(int n) {
+    int rev = 0, rem, temp = n;
+    while (n > 0) {
+        rem = n % 10;
+        rev = rev * 10 + rem;
+        n = n / 10;
+    }
+    return (rev == temp) ? 1 : 0;
 }
+
+int bubble_sort(int arr[], int n) {
+    for (int j = 0; j < n - 1; j++) {
+        int swapped = 0;
+        for (int k = 0; k < n - j - 1; k++) {
+            if (arr[k] > arr[k + 1]) {
+                int temp = arr[k];
+                arr[k] = arr[k + 1];
+                arr[k + 1] = temp;
+                swapped = 1;
+            }
+        }
+        if (!swapped) break;
+    }
+    return 0; 
+}
+
+#endif
