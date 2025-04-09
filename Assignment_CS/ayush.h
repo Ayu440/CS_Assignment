@@ -1,4 +1,4 @@
-#pragma once  // Simple and modern way to avoid multiple inclusion
+
 
 int sum(int a, int b) {
     return a + b;
